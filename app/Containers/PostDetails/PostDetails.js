@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
 import React, {useState, useEffect} from 'react';
 import {
@@ -49,7 +42,6 @@ const Post = ({ route, navigation }) => {
     if (!commentLoading && !isListEnd) {
 			setCommentLoading(true);
 			Api.get(`/comments?postId=${postId}`, null).then(resp => {
-        console.log(resp, 'APi uti');
         if (Array.isArray(resp)) {
 					setOffset(offset + 1);
 					setComments([...comments, ...resp]);

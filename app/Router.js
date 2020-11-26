@@ -7,7 +7,7 @@ import PostDetails from './Containers/PostDetails/PostDetails';
 
 const Stack = createStackNavigator();
 
-function MainStackNavigator() {
+const MainStackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator

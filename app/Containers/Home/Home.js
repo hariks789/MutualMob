@@ -1,25 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
   FlatList,
   StatusBar,
 } from 'react-native';
 import styles from './Styles';
-import PostTile from '../../Components/PostTile';
+import PostTile from '../../Components/PostTile/PostTile';
 import Api from '../../Lib/Api';
 
 const Home = ({ navigation }) => {
@@ -36,7 +23,6 @@ const Home = ({ navigation }) => {
       console.log('getData');
       setLoading(true);
       Api.get('/posts?_page=${offset}&_limit=10', null).then(resp => {
-        console.log(resp, 'APi uti');
         if (Array.isArray(resp)) {
           setOffset(offset + 1);
           setDataSource([...dataSource, ...resp]);
@@ -54,10 +40,6 @@ const Home = ({ navigation }) => {
       <PostTile item={item} navigation={navigation} />
     );
   };
-
-  const gotoDetails = () => {
-
-  }
 
   return (
     <>

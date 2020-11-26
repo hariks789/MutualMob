@@ -1,10 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
 import React, {useState, useEffect} from 'react';
 import {
@@ -29,7 +22,6 @@ const User = ({ route, navigation }) => {
 
   const getData = () => {
     const userId = route.params.userId;
-    console.log('userId', route);
 
     if (!loading) {
       console.log('getData');

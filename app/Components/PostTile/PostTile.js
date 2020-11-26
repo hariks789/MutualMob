@@ -1,22 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
   View,
   Text,
   TouchableOpacity,
-  Image,
-  FlatList,
-  StatusBar,
 } from 'react-native';
 import styles from './Styles';
 
@@ -31,21 +18,17 @@ const Home = ({item, navigation}) => {
       console.log('getData');
       setLoading(true);
       fetch(`https://jsonplaceholder.typicode.com/users?id=${item.userId}`)
-        .then((response) => response.json())
-        .then((responseJson) => {
-          if(Array.isArray(responseJson)) {
-            setDataSource(responseJson[0]);
-          }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+      .then((response) => response.json())
+      .then((responseJson) => {
+        if(Array.isArray(responseJson)) {
+          setDataSource(responseJson[0]);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
   };
-
-  const gotoDetails = () => {
-
-  }
 
   return (
     <>
