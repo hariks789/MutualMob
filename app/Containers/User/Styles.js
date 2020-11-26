@@ -23,6 +23,9 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 10
   },
+  userName: {
+    fontWeight: 'bold',
+  },
   imageText: {
     marginLeft: 10,
     flexWrap: 'wrap',

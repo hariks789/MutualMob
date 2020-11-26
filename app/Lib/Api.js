@@ -32,6 +32,7 @@ class Api {
     .then((res) => res.json())
     .catch((error, responseJson) => {
       return { status: 0, error: 'error' };
+      // Show snackbar or global pop up for error handling
     });
   }
 }

@@ -19,18 +19,16 @@ const Home = ({ navigation }) => {
 
   const getData = () => {
     console.log(offset);
-    if (!loading && !isListEnd) {
-      console.log('getData');
+    if (!loading && !isListEnd) { //Checking if list ended & ongoing API call happening
       setLoading(true);
       Api.get('/posts?_page=${offset}&_limit=10', null).then(resp => {
-        if (Array.isArray(resp)) {
-          setOffset(offset + 1);
+        if (Array.isArray(resp) && resp.length > 0) {
+          setOffset(offset + 1); //Incrementing next page
           setDataSource([...dataSource, ...resp]);
-          setLoading(false);
         } else {
-          setIsListEnd(true);
-          setLoading(false);
+          setIsListEnd(true); //Handling list end;
         }
+        setLoading(false);
       });
     }
   };
