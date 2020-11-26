@@ -13,8 +13,8 @@ import styles from './Styles';
 import Api from '../../Lib/Api';
 
 const Post = ({ route, navigation }) => {
-	const [loading, setLoading] = useState(false);
-	const [commentLoading, setCommentLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [commentLoading, setCommentLoading] = useState(false);
   const [data, setDataSource] = useState([]);
   const [comments, setComments] = useState([]);
   const [offset, setOffset] = useState(1);
@@ -26,30 +26,30 @@ const Post = ({ route, navigation }) => {
   const getData = () => {
     const postId = route.params.postId;
 
-		setLoading(true);
-		Api.get(`/posts?id=${postId}`, null).then(resp => {
-			setLoading(false);
-			console.log('responseJson', resp[0]);
-			if(Array.isArray(resp)) {
-				setDataSource(resp[0]);
-			}
-		});
+    setLoading(true);
+    Api.get(`/posts?id=${postId}`, null).then(resp => {
+      setLoading(false);
+      console.log('responseJson', resp[0]);
+      if(Array.isArray(resp)) {
+        setDataSource(resp[0]);
+      }
+    });
   };
 
   const getComments = () => {
     const postId = route.params.postId;
 
     if (!commentLoading && !isListEnd) {
-			setCommentLoading(true);
-			Api.get(`/comments?postId=${postId}`, null).then(resp => {
+      setCommentLoading(true);
+      Api.get(`/comments?postId=${postId}`, null).then(resp => {
         if (Array.isArray(resp)) {
-					setOffset(offset + 1);
-					setComments([...comments, ...resp]);
-					setCommentLoading(false);
-				} else {
-					setIsListEnd(true);
-					setCommentLoading(false);
-				}
+          setOffset(offset + 1);
+          setComments([...comments, ...resp]);
+          setCommentLoading(false);
+        } else {
+          setIsListEnd(true);
+          setCommentLoading(false);
+        }
       });
     }
   };
@@ -61,8 +61,8 @@ const Post = ({ route, navigation }) => {
         <Text>{item.body}</Text>
       </View>
     );
-	};
-	
+  };
+  
 
   return (
     <>
