@@ -47,7 +47,6 @@ const Post = ({ route, navigation }) => {
     const postId = route.params.postId;
 
     if (!commentLoading && !isListEnd) {
-			console.log('get Comments');
 			setCommentLoading(true);
 			Api.get(`/comments?postId=${postId}`, null).then(resp => {
         console.log(resp, 'APi uti');
@@ -64,7 +63,6 @@ const Post = ({ route, navigation }) => {
   };
 
   const ItemView = ({item}) => {
-    console.log('item', item);
     return (
       <View style={styles.commentContainer}>
         <Text style={styles.titleText}>{item.name}</Text>

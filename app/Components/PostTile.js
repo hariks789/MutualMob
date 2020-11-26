@@ -33,7 +33,6 @@ const Home = ({item, navigation}) => {
       fetch(`https://jsonplaceholder.typicode.com/users?id=${item.userId}`)
         .then((response) => response.json())
         .then((responseJson) => {
-          console.log('responseJson', responseJson[0]);
           if(Array.isArray(responseJson)) {
             setDataSource(responseJson[0]);
           }

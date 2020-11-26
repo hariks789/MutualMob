@@ -7,22 +7,15 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import { Provider } from 'react-redux';
 import MainStackNavigator from './Router';
+import store from './Store';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
+    <Provider store={store}>
       <MainStackNavigator />
-    </>
+    </Provider>
   );
 };
 

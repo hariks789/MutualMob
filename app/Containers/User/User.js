@@ -24,8 +24,6 @@ import styles from './Styles';
 const User = ({ route, navigation }) => {
   const [loading, setLoading] = useState(false);
   const [data, setDataSource] = useState([]);
-  const [offset, setOffset] = useState(1);
-  const [isListEnd, setIsListEnd] = useState(false);
 
   useEffect(() => getData(), []);
 
@@ -33,13 +31,12 @@ const User = ({ route, navigation }) => {
     const userId = route.params.userId;
     console.log('userId', route);
 
-    if (!loading && !isListEnd) {
+    if (!loading) {
       console.log('getData');
       setLoading(true);
       fetch(`https://jsonplaceholder.typicode.com/users?id=${userId}`)
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log('responseJson', responseJson[0]);
         if(Array.isArray(responseJson)) {
           setDataSource(responseJson[0]);
         }
