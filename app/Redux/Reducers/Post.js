@@ -7,16 +7,16 @@ const initialState = {
 };
 
 const postReducer = (state = initialState, action = {}) => {
-	switch (action.type) {
-		case SAVE_POST_INFO:
-			return {
-				...state,
-				posts: action.posts,
-			};
+  switch (action.type) {
+    case SAVE_POST_INFO:
+      return {
+          ...state,
+          posts: action.posts,
+      };
 
-		default:
-		return state;
-	}
+    default:
+    return state;
+  }
 };
 
 export function getPostDetails(callback) {
