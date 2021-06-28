@@ -6,24 +6,23 @@ import {SocketContext} from '../app/Contexts/socket';
 import {io, socketio} from 'socket.io-client';
 
 const App = () => {
-  const getSocket = async () => {
+  const getSocket = () => {
     const token = null; // get jwt token from local storage or cookie
     let socket;
     if (token) {
-      socket = socketio.connect('https://ea0f1b2c0ef0.ngrok.io', {
+      socket = io('https://aab6163d97e8.ngrok.io', {
         query: {token},
       });
     }
-    socket = io('https://ea0f1b2c0ef0.ngrok.io');
-    console.log(socket, socket);
+    socket = io('https://aab6163d97e8.ngrok.io');
 
-    // socket.on('connect', () => {
-    //   console.log(socket.id); // "G5p5..."
-    // });
+    socket.on('connect', () => {
+      console.log(socket.id); // "G5p5..."
+    });
 
-    // socket.onAny(() => {
-    //   console.log('event !!!!!!');
-    // });
+    socket.onAny(() => {
+      console.log('event !!!!!!');
+    });
     return socket;
   };
 

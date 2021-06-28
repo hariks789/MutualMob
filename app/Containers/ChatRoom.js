@@ -42,19 +42,22 @@ const ChatRoom = () => {
   }, [socket]);
 
   const sendMessage = () => {
-    socket.emit(
-      'TEST',
-      {
-        room: 'Code',
-        from: 'majid',
-        text: chatMessage ? chatMessage : 'Hello',
-        createdAt: new Date().now,
-      },
-      () => {
-        // this._scrollToBottom(50);
-      },
-    );
-    setMessage('');
+    try {
+      console.log('socket emitted');
+      socket.emit(
+        'TEST',
+        {
+          room: 'Code',
+          from: 'majid',
+          text: chatMessage ? chatMessage : 'Hello',
+          createdAt: new Date().now,
+        },
+        () => {
+          // this._scrollToBottom(50);
+        },
+      );
+      setMessage('');
+    } catch (error) {}
   };
 
   return (
