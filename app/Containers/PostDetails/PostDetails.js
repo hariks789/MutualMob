@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
@@ -12,7 +11,7 @@ import {
 import styles from './Styles';
 import Api from '../../Lib/Api';
 
-const Post = ({ route, navigation }) => {
+const Post = ({route, navigation}) => {
   const [loading, setLoading] = useState(false);
   const [commentLoading, setCommentLoading] = useState(false);
   const [data, setDataSource] = useState([]);
@@ -27,10 +26,9 @@ const Post = ({ route, navigation }) => {
     const postId = route.params.postId;
 
     setLoading(true);
-    Api.get(`/posts?id=${postId}`, null).then(resp => {
+    Api.get(`/posts?id=${postId}`, null).then((resp) => {
       setLoading(false);
-      console.log('responseJson', resp[0]);
-      if(Array.isArray(resp)) {
+      if (Array.isArray(resp)) {
         setDataSource(resp[0]);
       }
     });
@@ -41,7 +39,7 @@ const Post = ({ route, navigation }) => {
 
     if (!commentLoading && !isListEnd) {
       setCommentLoading(true);
-      Api.get(`/comments?postId=${postId}`, null).then(resp => {
+      Api.get(`/comments?postId=${postId}`, null).then((resp) => {
         if (Array.isArray(resp)) {
           setOffset(offset + 1);
           setComments([...comments, ...resp]);
@@ -62,7 +60,6 @@ const Post = ({ route, navigation }) => {
       </View>
     );
   };
-  
 
   return (
     <>

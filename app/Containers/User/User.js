@@ -1,15 +1,9 @@
-
 import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, View, Text, StatusBar} from 'react-native';
 import styles from './Styles';
 import Api from '../../Lib/Api';
 
-const User = ({ route, navigation }) => {
+const User = ({route, navigation}) => {
   const [loading, setLoading] = useState(false);
   const [data, setDataSource] = useState([]);
 
@@ -20,9 +14,9 @@ const User = ({ route, navigation }) => {
 
     if (!loading) {
       setLoading(true);
-      Api.get(`/users?id=${userId}`, null).then(resp => {
+      Api.get(`/users?id=${userId}`, null).then((resp) => {
         setLoading(false);
-        if(Array.isArray(resp)) {
+        if (Array.isArray(resp)) {
           setDataSource(resp[0]);
         }
       });

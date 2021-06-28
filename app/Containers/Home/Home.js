@@ -1,15 +1,10 @@
-
-import React, { useState, useEffect } from 'react';
-import {
-  SafeAreaView,
-  FlatList,
-  StatusBar,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {SafeAreaView, FlatList, StatusBar, Button} from 'react-native';
 import styles from './Styles';
 import PostTile from '../../Components/PostTile/PostTile';
 import Api from '../../Lib/Api';
 
-const Home = ({ navigation }) => {
+const Home = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = useState([]);
   const [offset, setOffset] = useState(1);
@@ -18,10 +13,10 @@ const Home = ({ navigation }) => {
   useEffect(() => getData(), []);
 
   const getData = () => {
-    console.log(offset);
-    if (!loading && !isListEnd) { //Checking if list ended & ongoing API call happening
+    if (!loading && !isListEnd) {
+      //Checking if list ended & ongoing API call happening
       setLoading(true);
-      Api.get('/posts?_page=${offset}&_limit=10', null).then(resp => {
+      Api.get('/posts?_page=${offset}&_limit=10', null).then((resp) => {
         if (Array.isArray(resp) && resp.length > 0) {
           setOffset(offset + 1); //Incrementing next page
           setDataSource([...dataSource, ...resp]);
@@ -34,15 +29,17 @@ const Home = ({ navigation }) => {
   };
 
   const ItemView = ({item}) => {
-    return (
-      <PostTile item={item} navigation={navigation} />
-    );
+    return <PostTile item={item} navigation={navigation} />;
   };
 
   return (
     <>
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.rootContainer}>
+        <Button
+          title="Go to ChatRoom"
+          onPress={() => navigation.navigate('ChatRoom')}
+        />
         <FlatList
           data={dataSource}
           contentContainerStyle={styles.listContainer}

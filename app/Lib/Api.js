@@ -1,4 +1,3 @@
-
 class Api {
   static headers() {
     return {
@@ -23,17 +22,19 @@ class Api {
   }
 
   static xhr(route, params, verb, token = '') {
-    console.log(route, 'route');
     const host = 'https://jsonplaceholder.typicode.com';
     const url = `${host}${route}`;
-    let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null );
-    console.log('url', `${url}`, options, 'params:', params);
+    let options = Object.assign(
+      {method: verb},
+      params ? {body: JSON.stringify(params)} : null,
+    );
+    // console.log('url', `${url}`, options, 'params:', params);
     return fetch(url, options)
-    .then((res) => res.json())
-    .catch((error, responseJson) => {
-      return { status: 0, error: 'error' };
-      // Show snackbar or global pop up for error handling
-    });
+      .then((res) => res.json())
+      .catch((error, responseJson) => {
+        return {status: 0, error: 'error'};
+        // Show snackbar or global pop up for error handling
+      });
   }
 }
 
